@@ -1,4 +1,4 @@
-drop database if exists discosRockoko;
+Drop database if exists discosRockoko;
 create database discosRockoko;
 use discosRockoko;
 create table generosMusicales(
@@ -16,10 +16,16 @@ create table musicos(
     nombre varchar(30),
     direccion varchar(70),
     telefono varchar(15),
-    edad int,
+    edad int,    
+    primary key(idMusico)
+    
+);
+create table instrumentosMusico(
+	idMusico int,
     idInstrumento int,
-    primary key(idMusico),
-    foreign key(idInstrumento) references instrumentosMusicales(idInstrumento)
+    PRIMARY KEY(idInstrumento,idMusico),
+    foreign key(idInstrumento) references instrumentosMusicales(idInstrumento),
+    foreign key(idMusico) references musicos(idMusico)
 );
 create table bandas(
 	idBanda int auto_increment,
@@ -29,15 +35,11 @@ create table bandas(
     paisOrigen varchar(20),
     primary key(idBanda)
 );
-create table creacionBandas(
-	idCreacionBanda int auto_increment,
-	idGenero int,
-    idMusico int,
-    idBanda int,
-    primary key(idCreacionBanda),
-    foreign key(idGenero) references generosMusicales(idGenero),
-    foreign key(idMusico) references musicos(idMusico),
-    foreign key(idBanda) references bandas(idBanda)
+create table bandasMusico(
+	
+);
+create table bandasgenero(
+	
 );
 create table tituloCanciones(
 	idTitulo int auto_increment,
@@ -48,28 +50,34 @@ create table albumes(
 	idAlbum int auto_increment,
     nombre varchar(30),
     fechaLanzamiento date,
-    idTitulo int,
-    idCreacionBanda int,
-    primary key(idAlbum),
-    foreign key(idTitulo) references tituloCanciones(idTitulo),
-    foreign key(idCreacionBanda) references creacionBandas(idCreacionBanda)
+    primary key(idAlbum)
 );
-insert into generosMusicales values	('Pop'),
+CREATE TABLE albumCanciones(
+
+);
+CREATE TABLE albumBandas(
+
+);
+insert into generosMusicales(descripcion) values	('Pop'),
 									('Metal'),
                                     ('Rock');
-insert into instrumentosMusicales values ('Guitarra Electrica'),
+                                    
+insert into instrumentosMusicales(descripcion) values ('Guitarra Electrica'),
 									     ('Bateria'),
                                          ('Cantante'),
                                          ('Teclados'),
                                          ('Bajo');
-insert into musicos values ('Juan Lopez', 'calle 25 #30-60', '5236489', 37, 3),
-						   ('Luis Gonzales', 'carrera 20 #10-15', '4563214', 29, 1),
-                           ('Andres Martinez', 'avenida tupita', '5695230', 38, 2),
-                           ('Carlos Palacios', 'calle 50 #20-14', '3265984', 42, 3),
-                           ('Alejandra Mena', 'calle 7 #10-35', '7894561', 32, 5),
-                           ('Camilo Muños', 'carrera 25 #17-50', '5214789', 33, 1),
-                           ('Pedro Zapata', 'avenida poraqui', '5123467', 25, 2),
-                           ('Sebastian Molina', 'calle 23 #38-49', '7412589', 34, 5),
-                           ('Andrea Serna', 'calle 53 #16-43', '3698521', 31, 4);
-insert into bandas values ('MetalFree','1998-10-15',null,'Colombia'),
-						  ('ProRock','1992-11-13','2017-01-19','Colombia');
+                                         
+insert into musicos values (1,'Juan Lopez', 'calle 25 #30-60', '5236489', 37),
+						   (2,'Luis Gonzales', 'carrera 20 #10-15', '4563214', 29),
+                           (3,'Andres Martinez', 'avenida tupita', '5695230', 38),
+                           (4,'Carlos Palacios', 'calle 50 #20-14', '3265984', 42),
+                           (5,'Alejandra Mena', 'calle 7 #10-35', '7894561', 32),
+                           (6,'Camilo Muños', 'carrera 25 #17-50', '5214789', 33),
+                           (7,'Pedro Zapata', 'avenida poraqui', '5123467', 25),
+                           (8,'Sebastian Molina', 'calle 23 #38-49', '7412589', 34),
+                           (9,'Andrea Serna', 'calle 53 #16-43', '3698521', 31);
+                           
+insert into bandas values (1,'MetalFree','1998-10-15',null,'Colombia'),
+						  (2,'ProRock','1992-11-13','2017-01-19','Colombia');
+
