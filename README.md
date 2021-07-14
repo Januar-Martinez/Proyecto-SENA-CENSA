@@ -1,4 +1,4 @@
-# Proyecto-SENA-CENSA
+# Proyecto SENA-CENSA
 La compañía discográfica: discos Rockoko, quiere almacenar la información de las bandas musicales y sus respectivos músicos. 
 
 De las bandas la quiere almacenar, el nombre de la banda, el género al cual pertenecen, fecha de creación, fecha de disolución y el país al cual pertenecen. Una banda puede tocar varios géneros musicales. 
