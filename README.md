@@ -8,4 +8,15 @@ Las bandas pueden tener varios integrantes (músicos), de estos se desea conocer
 Las bandas tienen álbumes de los cuales se almacena el nombre, fecha, título de las canciones, en ocasiones la disquera saca álbumes en los cuales pueden participar varias bandas. 
 
 ## Base de Datos
-
+ * generosMusicales(idGenero ,descripcion)
+ * instrumentosMusicales(idInstrumento ,descripcion)
+ * musicos(idMusico, nombre, direccion, telefono, edad)
+ * instrumentosMusico(idMusico ,idInstrumento)
+ * bandas(idBanda, nombre, fechaCreacion, fechaDisolucion, paisOrigen)
+ * bandasMusico(idBanda, idMusico)
+ * bandasgenero(idBanda, idGenero)
+ * tituloCanciones(idTitulo, descripcion)
+ * albumes(idAlbum, nombre, fechaLanzamiento)
+ * albumCanciones(idAlbum,idTitulo)
+ * albumBandas(idAlbum, idBanda)
+ * administradores(idAdministrador, nombre, password)
