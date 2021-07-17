@@ -20,3 +20,5 @@ Las bandas tienen álbumes de los cuales se almacena el nombre, fecha, título d
  * albumCanciones(idAlbum,idTitulo)
  * albumBandas(idAlbum, idBanda)
  * administradores(idAdministrador, nombre, password)
+
+![BD](https://github.com/Januar-Martinez/Proyecto-SENA-CENSA/blob/main/baseDeDatos.png)
