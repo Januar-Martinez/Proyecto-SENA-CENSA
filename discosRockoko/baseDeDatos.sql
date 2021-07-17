@@ -114,7 +114,7 @@ insert into bandasMusico values (1,1),(1,7),(1,3),(1,5),
                                 
 insert into bandasgenero values (1,2),(2,3),(3,1),(4,1),(4,3);
 
-insert into tituloCanciones(descripcion) values ('Mercurio'),('Venus'),('Tierra'),('Marte'),('Júpider'),('Saturno'),('Urano'),('Neptuno'),
+insert into tituloCanciones(descripcion) values ('Mercurio'),('Venus'),('Tierra'),('Marte'),('Júpiter'),('Saturno'),('Urano'),('Neptuno'),
 												('Amarillo'),('Azul'),('Rojo'),('Verde'),('Morado'),('Gris'),
                                                 ('Tokio'),('Múnich'),('París'),('Nueva York'),('Boston'),('Londres');
                                                 
