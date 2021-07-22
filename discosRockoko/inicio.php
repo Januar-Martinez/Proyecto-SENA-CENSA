@@ -13,11 +13,5 @@
     join titulocanciones as t
     on ac.idTitulo = t.idTitulo;";
 
-    
-
-
-
-
-
     include 'piePagina.php';
 ?>
