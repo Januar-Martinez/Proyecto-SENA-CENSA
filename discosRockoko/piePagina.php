@@ -1,4 +1,4 @@
-            <h9 class="text-center fixed-bottom">Derechos reservados.Januar Stiwar Martinez Palacios&Evelyn Natalia Betancur Guerra.januarpalacios5@gamil.com&evilinatalia17@hotmail.com</h9>
+            <h9 class="text-center fixed-bottom">Derechos reservados. Januar Stiwar Martinez Palacios. januarpalacios5@gmail.com</h9>
         </div>
     </div>
 </div>
