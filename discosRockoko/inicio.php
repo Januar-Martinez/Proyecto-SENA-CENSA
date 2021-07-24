@@ -217,5 +217,6 @@
         </table>
     ";  
 
+    
     include 'piePagina.php';
 ?>

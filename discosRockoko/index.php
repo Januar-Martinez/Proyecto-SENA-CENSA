@@ -64,6 +64,7 @@ endif;
             
         </div>
     </div>
+    
 	<div class="container">
 		<?=$mensaje;?>
 	</div>
