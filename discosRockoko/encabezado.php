@@ -20,8 +20,12 @@
                 <ul>
                     <li><a href='#'><i class='fas fa-home'></i>Inicio</a></li>
                     <li><a href='#'><i class='fas fa-plus-square'></i>Agregar</a></li>
-                    <li><a href='#'><i class='fas fa-pen-square'></i>Actualizar</a></li>
-                    <li><a href='#'><i class='fas fa-trash-alt'></i>Eliminar</a></li>
+                    <li><a href='#'><i class='fas fa-users'></i>Bandas</a></li>
+                    <li><a href='#'><i class='fas fa-book-open'></i>Albmues</a></li>
+                    <li><a href='#'><i class='fas fa-microphone-alt'></i>Músicos</a></li>
+                    <li><a href='#'><i class='fas fa-compact-disc'></i>Canciones</a></li>
+                    <li><a href='#'><i class='fas fa-music'></i>Generos Musicales</a></li>
+                    <li><a href='#'><i class='fas fa-guitar'></i>Instrumentos</a></li>
                 </ul> 
             
                 <div class='social_media'>
