@@ -1,67 +1,12 @@
 <?php
     include 'conexionBD.php';
     include 'encabezado.php';
-    echo "<h1>Canciones</h1>";
-    
-    $sql = "select t.idtitulo, t.descripcion as cancion, a.nombre as album 
-    from titulocanciones as t join albumcanciones as ac 
-    on t.idTitulo = ac.idTitulo
-    join albumes as a
-    on ac.idAlbum = a.idAlbum order by a.idAlbum;";
-
-    $datos = $conexion ->query($sql);
-
-	echo "
-		<table class='table'>
-		  <thead>
-			<tr>
-              <th scope='col'>#</th>
-			  <th scope='col'>Nombre De Canción</th>
-			  <th scope='col'>Nombre Del Álbum</th>
-              <th scope='col'>Actualizar</th>
-              <th scope='col'>Eliminar</th>
-			</tr>
-		  </thead>
-		  <tbody>
-	";
-	
-	while($fila = $datos->fetch_array()):
-            echo "
-            <tr>
-                <th scope='row'>$fila[idtitulo]</th>
-                <td>$fila[cancion]</td>
-                <td>$fila[album]</td>
-                <td>
-                    <a href='#'>
-                        <button type='button' class='btn btn-light'>
-                            <i class='fas fa-pen-square'></i>
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <a href='#'>
-                        <button type='button' class='btn btn-light'>
-                            <i class='fas fa-trash-alt'></i>
-                        </button>
-                    </a>
-                </td>
-            </tr>";
-    endwhile;
-    echo"
-            </tbody>
-        </table>
-    ";
 
     echo "<h1>Bandas Musicales</h1>";
 
-    $sql2="select b.idBanda, b.nombre as banda, b.fechaCreacion, b.fechaDisolucion, b.paisOrigen, a.nombre as album 
-    from bandas as b join albumbandas as ab
-    on b.idBanda = ab.idBanda
-    join albumes as a
-    on ab.idAlbum = a.idAlbum
-    order by b.idBanda;";
+    $sql="select * from bandas;";
 
-    $datos2 = $conexion ->query($sql2);
+    $datos = $conexion ->query($sql);
 
 	echo "
 		<table class='table'>
@@ -72,7 +17,6 @@
 			  <th scope='col'>Fecha De Creación</th>
               <th scope='col'>Fecha De Disolución</th>
               <th scope='col'>Pais De Origen</th>
-              <th scope='col'>Nombre De Álbum</th>
               <th scope='col'>Actualizar</th>
               <th scope='col'>Eliminar</th>
 			</tr>
@@ -80,15 +24,14 @@
 		  <tbody>
 	";
     $i = 1;
-	while($fila = $datos2->fetch_array()):
+	while($fila = $datos->fetch_array()):
         echo "
         <tr>
             <th scope='row'>$i</th>
-            <td>$fila[banda]</td>
+            <td>$fila[nombre]</td>
             <td>$fila[fechaCreacion]</td>
             <td>$fila[fechaDisolucion]</td>
             <td>$fila[paisOrigen]</td>
-            <td>$fila[album]</td>
             <td>
                 <a href='#'>
                     <button type='button' class='btn btn-light'>
@@ -113,9 +56,14 @@
 
     echo "<h1>Albumes</h1>";
 
-    $sql3="select * from albumes;";
+    $sql2="select a.nombre, a.fechaLanzamiento, b.nombre as banda 
+    from albumes as a join albumbandas as ab
+    on a.idAlbum = ab.idAlbum
+    join bandas as b 
+    on ab.idBanda = b.idBanda
+    order by a.idAlbum;";
 
-    $datos3 = $conexion ->query($sql3);
+    $datos2 = $conexion ->query($sql2);
 
 	echo "
 		<table class='table'>
@@ -124,19 +72,21 @@
               <th scope='col'>#</th>
 			  <th scope='col'>Nombre Del Álbum</th>
 			  <th scope='col'>Fecha De Lanzamiento</th>
+              <th scope='col'>Banda Musical</th>
               <th scope='col'>Actualizar</th>
               <th scope='col'>Eliminar</th>
 			</tr>
 		  </thead>
 		  <tbody>
 	";
-
-    while($fila = $datos3->fetch_array()):
+    $n=1;
+    while($fila = $datos2->fetch_array()):
         echo "
         <tr>
-            <th scope='row'>$fila[idAlbum]</th>
+            <th scope='row'>$n</th>
             <td>$fila[nombre]</td>
             <td>$fila[fechaLanzamiento]</td>
+            <td>$fila[banda]</td>
             <td>
                 <a href='#'>
                     <button type='button' class='btn btn-light'>
@@ -152,6 +102,7 @@
                 </a>
             </td>
         </tr>";
+        $n++;
     endwhile;
     echo"
             </tbody>
@@ -160,13 +111,13 @@
     
     echo "<h1>Músicos</h1>";
 
-    $sql4="select m.nombre as musico, m.direccion, m.telefono, m.edad, inm.descripcion 
-    from musicos as m join instrumentosmusico as im
-    on m.idMusico = im.idMusico
-    join instrumentosmusicales inm
-    on im.idInstrumento = inm.idInstrumento;";
+    $sql3="select m.nombre as musico, m.direccion, m.telefono, m.edad, b.nombre 
+    from musicos as m join bandasmusico as bm
+    on m.idMusico = bm.idMusico
+    join bandas as b
+    on bm.idBanda = b.idBanda;";
 
-    $datos4 = $conexion ->query($sql4);
+    $datos3 = $conexion ->query($sql3);
 
     echo "
     <table class='table'>
@@ -177,7 +128,7 @@
           <th scope='col'>Dirección</th>
           <th scope='col'>Teléfono</th>
           <th scope='col'>Edad</th>
-          <th scope='col'>Instrumento</th>
+          <th scope='col'>Banda</th>
           <th scope='col'>Actualizar</th>
           <th scope='col'>Eliminar</th>
         </tr>
@@ -186,7 +137,7 @@
     ";
 
     $j=1;
-    while($fila = $datos4->fetch_array()):
+    while($fila = $datos3->fetch_array()):
         echo "
         <tr>
             <th scope='row'>$j</th>
@@ -194,7 +145,7 @@
             <td>$fila[direccion]</td>
             <td>$fila[telefono]</td>
             <td>$fila[edad]</td>
-            <td>$fila[descripcion]</td>
+            <td>$fila[nombre]</td>
             <td>
                 <a href='#'>
                     <button type='button' class='btn btn-light'>

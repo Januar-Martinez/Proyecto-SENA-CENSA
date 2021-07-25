@@ -18,14 +18,11 @@
             <div class='sidebar'>
                 <h2>Rockoko</h2>
                 <ul>
-                    <li><a href='#'><i class='fas fa-home'></i>Inicio</a></li>
+                    <li><a href='inicio.php'><i class='fas fa-home'></i>Inicio</a></li>
                     <li><a href='#'><i class='fas fa-plus-square'></i>Agregar</a></li>
-                    <li><a href='#'><i class='fas fa-users'></i>Bandas</a></li>
-                    <li><a href='#'><i class='fas fa-book-open'></i>Albmues</a></li>
-                    <li><a href='#'><i class='fas fa-microphone-alt'></i>Músicos</a></li>
-                    <li><a href='#'><i class='fas fa-compact-disc'></i>Canciones</a></li>
-                    <li><a href='#'><i class='fas fa-music'></i>Generos Musicales</a></li>
-                    <li><a href='#'><i class='fas fa-guitar'></i>Instrumentos</a></li>
+                    <li><a href='canciones.php'><i class='fas fa-compact-disc'></i>Canciones</a></li>
+                    <li><a href='generos.php'><i class='fas fa-music'></i>Generos Musicales</a></li>
+                    <li><a href='instrumentos.php'><i class='fas fa-guitar'></i>Instrumentos</a></li>
                 </ul> 
             
                 <div class='social_media'>
