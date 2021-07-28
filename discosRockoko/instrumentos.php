@@ -18,8 +18,6 @@
               <th scope='col'>#</th>
 			  <th scope='col'>Nombre Del Instrumento</th>
 			  <th scope='col'>Nombre Del Musico</th>
-              <th scope='col'>Actualizar</th>
-              <th scope='col'>Eliminar</th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -31,20 +29,6 @@
             <th scope='row'>$i</th>
             <td>$fila[descripcion]</td>
             <td>$fila[nombre]</td>
-            <td>
-                <a href='#'>
-                    <button type='button' class='btn btn-light'>
-                        <i class='fas fa-pen-square'></i>
-                    </button>
-                </a>
-            </td>
-            <td>
-                <a href='#'>
-                    <button type='button' class='btn btn-light'>
-                        <i class='fas fa-trash-alt'></i>
-                    </button>
-                </a>
-            </td>
         </tr>";
         $i++;
     endwhile;

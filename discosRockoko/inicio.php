@@ -63,6 +63,18 @@
     on ab.idBanda = b.idBanda
     order by a.idAlbum;";
 
+	$sqlConteo = "select count(a.nombre) as c from albumes as a 
+	join albumbandas as ab on a.idAlbum = ab.idAlbum 
+	join bandas as b on ab.idBanda = b.idBanda 
+	group by a.idAlbum order by a.idAlbum;";
+
+	$conteo = $conexion ->query($sqlConteo);
+	while($fila = $conteo->fetch_array()):
+		$conteoBandas[] = $fila['c'];
+	endwhile;
+	
+	$banda_anterior="";
+
     $datos2 = $conexion ->query($sql2);
 
 	echo "
@@ -73,36 +85,46 @@
 			  <th scope='col'>Nombre Del Álbum</th>
 			  <th scope='col'>Fecha De Lanzamiento</th>
               <th scope='col'>Banda Musical</th>
-              <th scope='col'>Actualizar</th>
-              <th scope='col'>Eliminar</th>
 			</tr>
 		  </thead>
 		  <tbody>
 	";
     $n=1;
+	$a=0;
     while($fila = $datos2->fetch_array()):
-        echo "
+       
+	   
+	   if($banda_anterior!=$fila['nombre']):
+
+			$j = $conteoBandas[$a];
+				echo "<tr>
+						<th scope='row'>$n</th>
+						<td rowspan='$j'> $fila[nombre]</td>
+						<td rowspan='$j'>$fila[fechaLanzamiento]</td>
+						<td>$fila[banda]</td>
+					</tr>";
+					$a++;
+			else:
+				echo "<tr>
+						<th scope='row'>$n</th>
+						<td>$fila[banda]</td>
+					</tr>";		
+
+			endif;
+
+			$banda_anterior	=$fila['nombre'];	
+	   
+	   
+	   
+	   /* echo "
         <tr>
             <th scope='row'>$n</th>
             <td>$fila[nombre]</td>
             <td>$fila[fechaLanzamiento]</td>
             <td>$fila[banda]</td>
-            <td>
-                <a href='#'>
-                    <button type='button' class='btn btn-light'>
-                        <i class='fas fa-pen-square'></i>
-                    </button>
-                </a>
-            </td>
-            <td>
-                <a href='#'>
-                    <button type='button' class='btn btn-light'>
-                        <i class='fas fa-trash-alt'></i>
-                    </button>
-                </a>
-            </td>
-        </tr>";
+        </tr>";*/
         $n++;
+		//$a++;
     endwhile;
     echo"
             </tbody>
@@ -129,8 +151,6 @@
           <th scope='col'>Teléfono</th>
           <th scope='col'>Edad</th>
           <th scope='col'>Banda</th>
-          <th scope='col'>Actualizar</th>
-          <th scope='col'>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -146,20 +166,6 @@
             <td>$fila[telefono]</td>
             <td>$fila[edad]</td>
             <td>$fila[nombre]</td>
-            <td>
-                <a href='#'>
-                    <button type='button' class='btn btn-light'>
-                        <i class='fas fa-pen-square'></i>
-                    </button>
-                </a>
-            </td>
-            <td>
-                <a href='#'>
-                    <button type='button' class='btn btn-light'>
-                        <i class='fas fa-trash-alt'></i>
-                    </button>
-                </a>
-            </td>
         </tr>";
         $j++;
     endwhile;
