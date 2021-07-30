@@ -4,7 +4,7 @@
 
     echo "<h1>Generos Musicales</h1>";
     
-    $sql = "select g.descripcion, b.nombre from generosmusicales as g join bandasgenero as bg
+    $sql = "select g.descripcion, b.nombre from generosMusicales as g join bandasgenero as bg
     on g.idGenero = bg.idGenero
     join bandas as b
     on bg.idBanda = b.idBanda;";

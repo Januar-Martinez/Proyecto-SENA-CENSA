@@ -5,10 +5,26 @@
     echo "<h1>Canciones</h1>";
     
     $sql = "select t.idtitulo, t.descripcion as cancion, a.nombre as album 
-    from titulocanciones as t join albumcanciones as ac 
+    from tituloCanciones as t join albumCanciones as ac 
     on t.idTitulo = ac.idTitulo
     join albumes as a
     on ac.idAlbum = a.idAlbum order by a.idAlbum;";
+
+	$sqlConteo = "select count(a.nombre) as a
+    from tituloCanciones as t join albumCanciones as ac 
+    on t.idTitulo = ac.idTitulo
+    join albumes as a
+    on ac.idAlbum = a.idAlbum
+    GROUP BY a.idAlbum
+    order by a.idAlbum;";
+
+	$conteo = $conexion ->query($sqlConteo) or die("error interno");
+	
+	while($fila = $conteo->fetch_array()):
+		$conteoAlbum[] = $fila['a'];
+	endwhile;
+	
+	$album_anterior="";	
 
     $datos = $conexion ->query($sql);
 
@@ -23,14 +39,26 @@
 		  </thead>
 		  <tbody>
 	";
-	
+	$a=0;
 	while($fila = $datos->fetch_array()):
+	   if($album_anterior!=$fila['album']):
+			$j = $conteoAlbum[$a];
             echo "
             <tr>
                 <th scope='row'>$fila[idtitulo]</th>
                 <td>$fila[cancion]</td>
-                <td>$fila[album]</td>
+                <td rowspan='$j'>$fila[album]</td>
             </tr>";
+			$a++;
+		else:
+			echo "<tr>
+					<th scope='row'>$fila[idtitulo]</th>
+					<td>$fila[cancion]</td>
+				</tr>
+			";		
+
+		endif;
+		$album_anterior	=$fila['album'];
     endwhile;
     echo"
             </tbody>

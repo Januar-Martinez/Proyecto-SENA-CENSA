@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"):
     if($fila =$datos->fetch_assoc()):
         session_start();
         $_SESSION['idUsuario'] = $fila['idAdministrador'];
-        $_SESSION['usuario'] = $fila['nombre'];
+        $_SESSION['usuario'] = $fila['nombre'];		
         header('Location: inicio.php');
     else:
     $mensaje = "

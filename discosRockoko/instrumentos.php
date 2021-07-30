@@ -4,7 +4,7 @@
 
     echo "<h1>Instrumentos Musicales</h1>";
     
-    $sql = "select im.descripcion, m.nombre from instrumentosmusicales as im join instrumentosmusico as inm
+    $sql = "select im.descripcion, m.nombre from instrumentosMusicales as im join instrumentosMusico as inm
     on im.idInstrumento = inm.idInstrumento
     join musicos as m
     on inm.idMusico = m.idMusico;";

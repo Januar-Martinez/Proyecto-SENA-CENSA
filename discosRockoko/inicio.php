@@ -57,23 +57,24 @@
     echo "<h1>Albumes</h1>";
 
     $sql2="select a.nombre, a.fechaLanzamiento, b.nombre as banda 
-    from albumes as a join albumbandas as ab
+    from albumes as a join albumBandas as ab
     on a.idAlbum = ab.idAlbum
     join bandas as b 
     on ab.idBanda = b.idBanda
     order by a.idAlbum;";
 
 	$sqlConteo = "select count(a.nombre) as c from albumes as a 
-	join albumbandas as ab on a.idAlbum = ab.idAlbum 
+	join albumBandas as ab on a.idAlbum = ab.idAlbum 
 	join bandas as b on ab.idBanda = b.idBanda 
 	group by a.idAlbum order by a.idAlbum;";
 
-	$conteo = $conexion ->query($sqlConteo);
+	$conteo = $conexion ->query($sqlConteo) or die("error interno");
+	
 	while($fila = $conteo->fetch_array()):
-		$conteoBandas[] = $fila['c'];
+		$conteoAlbum[] = $fila['c'];
 	endwhile;
 	
-	$banda_anterior="";
+	$album_anterior="";
 
     $datos2 = $conexion ->query($sql2);
 
@@ -94,37 +95,27 @@
     while($fila = $datos2->fetch_array()):
        
 	   
-	   if($banda_anterior!=$fila['nombre']):
+	   if($album_anterior!=$fila['nombre']):
 
-			$j = $conteoBandas[$a];
-				echo "<tr>
-						<th scope='row'>$n</th>
-						<td rowspan='$j'> $fila[nombre]</td>
-						<td rowspan='$j'>$fila[fechaLanzamiento]</td>
-						<td>$fila[banda]</td>
-					</tr>";
-					$a++;
-			else:
-				echo "<tr>
-						<th scope='row'>$n</th>
-						<td>$fila[banda]</td>
-					</tr>";		
+			$j = $conteoAlbum[$a];
+			echo "<tr>
+					<th scope='row'>$n</th>
+					<td rowspan='$j'> $fila[nombre]</td>
+					<td rowspan='$j'>$fila[fechaLanzamiento]</td>
+					<td>$fila[banda]</td>
+				</tr>";
+				$a++;
+		else:
+			echo "<tr>
+					<th scope='row'>$n</th>
+					<td>$fila[banda]</td>
+				</tr>
+			";		
 
-			endif;
+		endif;
 
-			$banda_anterior	=$fila['nombre'];	
-	   
-	   
-	   
-	   /* echo "
-        <tr>
-            <th scope='row'>$n</th>
-            <td>$fila[nombre]</td>
-            <td>$fila[fechaLanzamiento]</td>
-            <td>$fila[banda]</td>
-        </tr>";*/
+		$album_anterior	=$fila['nombre'];
         $n++;
-		//$a++;
     endwhile;
     echo"
             </tbody>
@@ -134,10 +125,27 @@
     echo "<h1>Músicos</h1>";
 
     $sql3="select m.nombre as musico, m.direccion, m.telefono, m.edad, b.nombre 
-    from musicos as m join bandasmusico as bm
+    from musicos as m join bandasMusico as bm
     on m.idMusico = bm.idMusico
     join bandas as b
-    on bm.idBanda = b.idBanda;";
+    on bm.idBanda = b.idBanda
+    ORDER BY m.idMusico;";
+	
+	$sqlConteo2 = "select count(m.nombre) as m
+    from musicos as m join bandasMusico as bm
+    on m.idMusico = bm.idMusico
+    join bandas as b
+    on bm.idBanda = b.idBanda
+    GROUP BY m.idMusico
+    ORDER BY m.idMusico";
+
+	$conteo2 = $conexion ->query($sqlConteo2) or die("error interno");
+	
+	while($fila = $conteo2->fetch_array()):
+		$conteoMusico[] = $fila['m'];
+	endwhile;
+	
+	$musico_anterior="";
 
     $datos3 = $conexion ->query($sql3);
 
@@ -156,18 +164,30 @@
       <tbody>
     ";
 
-    $j=1;
+    $l=1;
+	$b=0;
     while($fila = $datos3->fetch_array()):
-        echo "
-        <tr>
-            <th scope='row'>$j</th>
-            <td>$fila[musico]</td>
-            <td>$fila[direccion]</td>
-            <td>$fila[telefono]</td>
-            <td>$fila[edad]</td>
-            <td>$fila[nombre]</td>
-        </tr>";
-        $j++;
+	   if($musico_anterior!=$fila['musico']):
+		   $c = $conteoMusico[$b];
+			echo "
+				<tr>
+					<th scope='row'>$l</th>
+					<td rowspan='$c'>$fila[musico]</td>
+					<td rowspan='$c'>$fila[direccion]</td>
+					<td rowspan='$c'>$fila[telefono]</td>
+					<td rowspan='$c'>$fila[edad]</td>
+					<td>$fila[nombre]</td>
+				</tr>";
+			$b++;
+		else:
+			echo "<tr>
+					<th scope='row'>$l</th>
+					<td>$fila[nombre]</td>
+				</tr>
+			";			
+		endif;
+		$musico_anterior =$fila['musico'];
+        $l++;
     endwhile;
     echo"
             </tbody>
