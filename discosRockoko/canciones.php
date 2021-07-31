@@ -21,7 +21,7 @@
 	$conteo = $conexion ->query($sqlConteo) or die("error interno");
 	
 	while($fila = $conteo->fetch_array()):
-		$conteoAlbum[] = $fila['a'];
+		$conteoCancion[] = $fila['a'];
 	endwhile;
 	
 	$album_anterior="";	
@@ -42,7 +42,7 @@
 	$a=0;
 	while($fila = $datos->fetch_array()):
 	   if($album_anterior!=$fila['album']):
-			$j = $conteoAlbum[$a];
+			$j = $conteoCancion[$a];
             echo "
             <tr>
                 <th scope='row'>$fila[idtitulo]</th>
