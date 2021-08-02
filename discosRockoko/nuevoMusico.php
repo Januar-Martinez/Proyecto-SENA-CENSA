@@ -2,7 +2,7 @@
     include 'conexionBD.php';
     include 'encabezado.php';
 
-    $sqlmax= "select MAX(idGenero) FROM generosMusicales;";
+    $sqlmax= "select MAX(idMusico) FROM musicos;";
 
     $datos = $conexion ->query($sqlmax) or die("error interno");
 
@@ -11,14 +11,15 @@
     $ID= $fila[0] + 1;
 
     //var_dump($_REQUEST);
-    $sql= "insert into generosMusicales values ($ID, '$_REQUEST[txtdescripcion]')";
+    $sql= "insert into musicos values ($ID, '$_REQUEST[txtnombre]', '$_REQUEST[txtdireccion]', '$_REQUEST[txtTelefono]', '$_REQUEST[txtedad]')";
+    //echo $sql;
 
     $datos = $conexion ->query($sql) or die("error interno");
 
     echo "
     <div class='alert alert-success' role='alert' style='margin-top:55px;'>
         Registro exitoso 
-        <a href='crearNuevoGenero.php'>volver</a>
+        <a href='crearNuevoMusico.php'>volver</a>
     </div>"; 
 
 

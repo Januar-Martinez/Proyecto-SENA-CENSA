@@ -8,9 +8,9 @@
 		
 		<div class='row container' style = 'margin-top:50px;'>
 			<div class='col-3' style='text-align: center;'><a href='crearNuevoGenero.php' class='btn btn-outline-dark'>Generos Musicales</a></div>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Instrumentos Musicales</a></div>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Musicos</a></div>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Instrumentos/Musico</a></div>
+			<div class='col-3' style='text-align: center;'><a href='crearNuevoInstrumento.php' class='btn btn-outline-dark'>Instrumentos Musicales</a></div>
+			<div class='col-3' style='text-align: center;'><a href='crearNuevoMusico.php' class='btn btn-outline-dark'>Musicos</a></div>
+			<div class='col-3' style='text-align: center;'><a href='crearNuevoInstrumentoMusico.php' class='btn btn-outline-dark'>Instrumentos/Musico</a></div>
 		</div>
 		
 		<div class='row container'>
