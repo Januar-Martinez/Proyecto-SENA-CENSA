@@ -35,7 +35,7 @@
                 </select>
             </div>
             <div>
-                <button type='submit' class='btn btn-primary'>Sign in</button>
+                <button type='submit' class='btn btn-primary'>Agregar</button>
             </div>
         </form>
     ";
@@ -43,14 +43,6 @@
 
 
 
-    
-    //echo"<select name='txtmusico'>
-            
-    //";
-    //while($fila = $musicos->fetch_array()):
-    //    echo"<option value='$fila[idMusico]'>$fila[nombre]</option>";
-
-    //endwhile;
 
 
 
