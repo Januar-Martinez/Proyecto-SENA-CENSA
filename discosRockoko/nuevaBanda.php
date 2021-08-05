@@ -10,13 +10,22 @@
 
     $ID= $fila[0] + 1;
 
-    var_dump($_REQUEST["chkDisolucion"]);
-    //echo"$_REQUEST[flexCheckChecked]";
-    exit;
+    //var_dump($_REQUEST["chkDisolucion"]);
+
+    $fechaC= (new \DateTime($_REQUEST["txtfechC"]))->format("Y-m-d") . PHP_EOL;
+    $fechaD= (new \DateTime($_REQUEST["txtfechD"]))->format("Y-m-d") . PHP_EOL;
+
+    if($_REQUEST["chkDisolucion"]=="activa"):
+        $fechaDisolucion="0000-00-00";
+    else:
+        $fechaDisolucion=$fechaD;
+    endif;
+    //echo $fechaDisolucion;
+    //exit;
 
     $datos = $conexion->prepare("insert into bandas values(?,?,?,?,?);");
-    $datos->bind_param('issss',$ID,$_REQUEST['txtnombre'],$_REQUEST['txtfechC'],$_REQUEST['txtfechD'],$_REQUEST['txtpais']);
-    $datos->execute() or die('error interno #2');
+    $datos->bind_param('issss',$ID,$_REQUEST['txtnombre'],$fechaC,$fechaDisolucion,$_REQUEST['txtpais']);
+    $datos->execute() or die($datos->error);
 
     echo "
     <div class='alert alert-success' role='alert' style='margin-top:55px;'>
@@ -25,5 +34,5 @@
     </div>"; 
 
 
-    include 'piePagina.php'
+    include 'piePagina.php';
 ?>

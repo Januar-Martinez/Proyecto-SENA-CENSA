@@ -21,10 +21,10 @@
 		</div>
 		
 		<div class='row container'>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Albumes</a></div>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Album/Canciones</a></div>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Album/Bandas</a></div>
-			<div class='col-3' style='text-align: center;'><a href='#' class='btn btn-outline-dark'>Administradores</a></div>
+			<div class='col-3' style='text-align: center;'><a href='crearNuevoAlbum.php' class='btn btn-outline-dark'>Albumes</a></div>
+			<div class='col-3' style='text-align: center;'><a href='CrearNuevoAlbumCancion.php' class='btn btn-outline-dark'>Album/Canciones</a></div>
+			<div class='col-3' style='text-align: center;'><a href='CrearNuevoAlbumBanda.php' class='btn btn-outline-dark'>Album/Bandas</a></div>
+			<div class='col-3' style='text-align: center;'><a href='crearNuevoAdministrador.php' class='btn btn-outline-dark'>Administradores</a></div>
 		</div>
 	";
 

@@ -12,18 +12,18 @@
                 <input type='text' name='txtnombre' class='form-control' id='txtnombre'>
             </div>
             <div class='col-md-6'>
-                <label for='txtfechC' class='form-label'>Fecha de Creación (AAAA-MM-DD)</label>
-                <input type='text' name='txtfechC' class='form-control' id='txtfechC'>
+                <label for='txtfechC' class='form-label'>Fecha de Creación</label>
+                <input type='date' name='txtfechC' class='form-control' id='txtfechC'>
             </div>
             <div class='col-md-6'>
                 <div class='form-check'>
-                    <input class='form-check-input' name='chkDisolucion' onClick='ActivarCasilla(this);' type='checkbox' value='hola' id='flexCheckChecked' checked>
+                    <input class='form-check-input' name='chkDisolucion' onClick='ActivarCasilla(this);' type='checkbox' value='activa' id='flexCheckChecked' checked>
                     <label class='form-check-label' for='flexCheckChecked'>
                         Banda Activa
                     </label>
                 </div>
-                <label for='txtfechD' class='form-label'>Fecha de Disolucón (AAAA-MM-DD)</label>
-                <input type='text' name='txtfechD' class='form-control' id='txtfechD' style='visibility:hidden'>
+                <label for='txtfechD' class='form-label'>Fecha de Disolucón</label>
+                <input type='date' name='txtfechD' class='form-control' id='txtfechD' style='visibility:hidden'>
             </div>
             <div class='col-md-6'>
                 <label for='txtpais' class='form-label'>País de Origen</label>

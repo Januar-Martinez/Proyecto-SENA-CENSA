@@ -2,7 +2,7 @@
     include 'conexionBD.php';
     include 'encabezado.php';
 
-    $sqlmax= "select MAX(idTitulo) FROM tituloCanciones;";
+    $sqlmax= "select MAX(idAdministrador) FROM administradores;";
 
     $datos = $conexion ->query($sqlmax) or die("error interno");
 
@@ -10,15 +10,19 @@
 
     $ID= $fila[0] + 1;
 
-    //var_dump($_REQUEST);
-    $sql= "insert into tituloCanciones values ($ID, '$_REQUEST[txtdescripcion]')";
+    $password=md5($_REQUEST['txtpassword']);
 
-    $datos = $conexion ->query($sql) or die("error interno");
+
+    //var_dump($_REQUEST);
+
+    $datos = $conexion->prepare("insert into administradores values (?,?,?);");
+    $datos->bind_param('iss',$ID,$_REQUEST['txtadmin'],$password);
+    $datos->execute() or die('error interno #2');
 
     echo "
     <div class='alert alert-success' role='alert' style='margin-top:55px;'>
         Registro exitoso 
-        <a href='crearNuevoGenero.php'>volver</a>
+        <a href='crearNuevoAlbum.php'>volver</a>
     </div>"; 
 
 

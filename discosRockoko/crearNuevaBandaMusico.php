@@ -11,8 +11,8 @@
     echo
     "
         <h1>Agregar Banda/Musico</h1>
-        <form action='nuevoBandaMusico.php' method='POST'>
-            <div>
+        <form class='row g-3' action='nuevoBandaMusico.php' method='POST'>
+            <div class='col-md-6'>
                 <label for='txtbanda' class='form-label'>Nombre de la banda</label>
                 <select name='txtbanda'>
     ";
@@ -23,7 +23,7 @@
     "
                 </select>
             </div>
-            <div>
+            <div class='col-md-6'>
                 <label for='txtmusico' class='form-label'>Nombre del musico</label>
                 <select name='txtmusico'>
     ";
@@ -34,7 +34,7 @@
     "
                 </select>
             </div>
-            <div>
+            <div class='col-md-12'>
                 <button type='submit' class='btn btn-primary'>Agregar</button>
             </div>
         </form>

@@ -25,12 +25,17 @@
 	";
     $i = 1;
 	while($fila = $datos->fetch_array()):
+        if($fila['fechaDisolucion']=='0000-00-00'):
+            $fecha='Activa Actualmente';
+        else:
+            $fecha=$fila['fechaDisolucion'];
+        endif;
         echo "
         <tr>
             <th scope='row'>$i</th>
             <td>$fila[nombre]</td>
             <td>$fila[fechaCreacion]</td>
-            <td>$fila[fechaDisolucion]</td>
+            <td>$fecha</td>
             <td>$fila[paisOrigen]</td>
             <td>
                 <a href='#'>
