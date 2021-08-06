@@ -22,7 +22,7 @@
     echo "
     <div class='alert alert-success' role='alert' style='margin-top:55px;'>
         Registro exitoso 
-        <a href='crearNuevoAlbum.php'>volver</a>
+        <a href='crearNuevoAdministrador.php'>volver</a>
     </div>"; 
 
 

@@ -16,5 +16,5 @@
     </div>"; 
 
 
-    include 'piePagina.php'
+    include 'piePagina.php';
 ?>
