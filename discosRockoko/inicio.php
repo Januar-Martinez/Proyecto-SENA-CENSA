@@ -23,7 +23,7 @@
 		  </thead>
 		  <tbody>
 	";
-    $i = 1;
+   
 	while($fila = $datos->fetch_array()):
         if($fila['fechaDisolucion']=='0000-00-00'):
             $fecha='Activa Actualmente';
@@ -32,32 +32,104 @@
         endif;
         echo "
         <tr>
-            <th scope='row'>$i</th>
+            <th scope='row'>$fila[idBanda]</th>
             <td>$fila[nombre]</td>
             <td>$fila[fechaCreacion]</td>
             <td>$fecha</td>
             <td>$fila[paisOrigen]</td>
             <td>
                 <a href='#'>
-                    <button type='button' class='btn btn-light'>
+                    <button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#ventanaActualizar$fila[idBanda]'>
                         <i class='fas fa-pen-square'></i>
                     </button>
                 </a>
             </td>
             <td>
                 <a href='#'>
-                    <button type='button' class='btn btn-light'>
+                    <button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#ventanaEliminar$fila[idBanda]'>
                         <i class='fas fa-trash-alt'></i>
                     </button>
                 </a>
             </td>
         </tr>";
-        $i++;
+
+        echo
+        "
+            <!-- Modal Eliminar -->
+            <div class='modal fade' id='ventanaEliminar$fila[idBanda]' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Borra Banda</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+                    ¿Esta Seguro Que desea Eliminar a la banda con nombre $fila[nombre]?
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>No</button>
+                    <form action='eliminarBanda.php' method='post'>
+                        <input type ='hidden' name='txtidBorrar' value = $fila[idBanda]>
+                        <button type='submit' class='btn btn-primary'>Si</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+    
+            <!-- Modal Actualizar -->
+            <div class='modal fade' id='ventanaActualizar$fila[idBanda]' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog'>
+              <div class='modal-content'>
+                <div class='modal-header'>
+                  <h5 class='modal-title' id='exampleModalLabel'>Actualizar Banda</h5>
+                  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+                  <form action='actualizarBanda.php' method='post'>
+                      <div class='mb-3'>
+                        <label for='txtIDNuevo' class='form-label'>Identificador</label>			  
+                        <input type='text' name='txtIDNuevo' value = $fila[idBanda] class='form-control' id='txtid' required>
+                      </div>
+                      <div class='mb-3'>
+                        <label for='txtnombre' class='form-label'>Nombre</label>			  
+                        <input type='text' name='txtnombre' value = $fila[nombre] class='form-control' id='txtnombre' required>
+                      </div>
+                      <div class='mb-3'>
+                        <label for='txtfechaC' class='form-label'>Fecha De Creación (AAAA-MM-DD)</label>			  
+                        <input type='text' name='txtfechaC' value = $fila[fechaCreacion] class='form-control' id='txtfechaC' required>
+                      </div>
+                      <div class='mb-3'>
+                        <label for='txtfechaD' class='form-label'>Fecha De Disolución (AAAA-MM-DD)</label>			  
+                        <input type='text' name='txtfechaD' value = $fila[fechaDisolucion] class='form-control' id='txtfechaD' required>
+                      </div>
+                      <div class='mb-3'>
+                        <label for='txtpais' class='form-label'>Pais De Origen</label>			  
+                        <input type='text' name='txtpais' value = $fila[paisOrigen] class='form-control' id='txtpais' required>
+                      </div>
+                </div>
+                <div class='modal-footer'>
+                      <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancelar</button>
+                      <input type ='hidden' name='txtIdAnterior' value = $fila[idBanda]>
+                      <button type='submit' class='btn btn-primary'>Actualizar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        ";
+
     endwhile;
     echo"
             </tbody>
         </table>
     ";
+
+
+
+
+
+
 
     echo "<h1>Albumes</h1>";
 

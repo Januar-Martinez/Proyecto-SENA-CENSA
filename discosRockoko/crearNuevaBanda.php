@@ -9,11 +9,11 @@
         <form class='row g-3' action='nuevaBanda.php' method='POST'>
             <div class='col-md-6'>
                 <label for='txtnombre' class='form-label'>Nombre</label>
-                <input type='text' name='txtnombre' class='form-control' id='txtnombre'>
+                <input type='text' name='txtnombre' class='form-control' id='txtnombre' required>
             </div>
             <div class='col-md-6'>
                 <label for='txtfechC' class='form-label'>Fecha de Creación</label>
-                <input type='date' name='txtfechC' class='form-control' id='txtfechC'>
+                <input type='date' name='txtfechC' class='form-control' id='txtfechC' required>
             </div>
             <div class='col-md-6'>
                 <div class='form-check'>
@@ -27,7 +27,7 @@
             </div>
             <div class='col-md-6'>
                 <label for='txtpais' class='form-label'>País de Origen</label>
-                <input type='text' name='txtpais' class='form-control' id='txtpais'>
+                <input type='text' name='txtpais' class='form-control' id='txtpais' required>
             </div>
             <div class='col-md-12'>
                 <button type='submit' class='btn btn-primary'>Agregar</button>

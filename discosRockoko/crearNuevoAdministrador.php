@@ -9,15 +9,15 @@
             <form onsubmit='verificarPasswords(); return false' action='nuevoAdministrador.php' method='POST'>
                 <div>
                     <label for='txtadmin' class='form-label'>Nombre del Administrador</label>
-                    <input type='text' name='txtadmin' class='form-control' id='txtadmin'>
+                    <input type='text' name='txtadmin' class='form-control' id='txtadmin' required>
                 </div>
                 <div>
                     <label for='txtpassword' class='form-label'>Contraseña</label>
-                    <input type='password' name='txtpassword' class='form-control' id='txtpassword'>
+                    <input type='password' name='txtpassword' class='form-control' id='txtpassword' required>
                 </div>
                 <div>
                     <label for='txtpassword2' class='form-label'>Repetir Contraseña</label>
-                    <input type='password' name='txtpassword2' class='form-control' id='txtpassword2'>
+                    <input type='password' name='txtpassword2' class='form-control' id='txtpassword2' required>
                 </div>
                 <div>
                     <button type='submit' class='btn btn-primary' id='enviar'>Agregar</button>

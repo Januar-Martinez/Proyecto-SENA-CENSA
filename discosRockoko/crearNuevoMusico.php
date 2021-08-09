@@ -9,19 +9,19 @@
         <form class='row g-3' action='nuevoMusico.php' method='POST'>
             <div class='col-md-6'>
                 <label for='txtnombre' class='form-label'>Nombre</label>
-                <input type='text' name='txtnombre' class='form-control' id='txtnombre'>
+                <input type='text' name='txtnombre' class='form-control' id='txtnombre' required>
             </div>
             <div class='col-md-6'>
                 <label for='txtdireccion' class='form-label'>Dirección</label>
-                <input type='text' name='txtdireccion' class='form-control' id='txtdireccion'>
+                <input type='text' name='txtdireccion' class='form-control' id='txtdireccion' required>
             </div>
             <div class='col-md-6'>
                 <label for='txtTelefono' class='form-label'>Teléfono</label>
-                <input type='text' name='txtTelefono' class='form-control' id='txtTelefono'>
+                <input type='text' name='txtTelefono' class='form-control' id='txtTelefono' required>
             </div>
             <div class='col-md-6'>
                 <label for='txtedad' class='form-label'>Edad</label>
-                <input type='number' name='txtedad' class='form-control' id='txtedad'>
+                <input type='number' name='txtedad' class='form-control' id='txtedad' required>
             </div>
             <div class='col-md-12'>
                 <button type='submit' class='btn btn-primary'>Agregar</button>
