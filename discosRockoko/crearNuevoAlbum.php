@@ -4,7 +4,7 @@
    
     echo
     "
-        <h1>Agregar Nueva Canción</h1>
+        <h1>Agregar Nuevo Álbum</h1>
 
         <form class='row g-3' action='nuevoAlbum.php' method='POST'>
             <div class='col-md-6'>

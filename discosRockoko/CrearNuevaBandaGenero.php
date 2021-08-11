@@ -10,7 +10,7 @@
 
     echo
     "
-        <h1>Agregar Banda/Musico</h1>
+        <h1>Agregar Banda/Género</h1>
         <form class='row g-3' action='nuevoBandaGenero.php' method='POST'>
             <div class='col-md-6'>
                 <label for='txtbanda' class='form-label'>Nombre de la banda</label>
